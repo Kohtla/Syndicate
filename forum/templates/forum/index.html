@@ -1,0 +1,21 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}Forum{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1 class="display-3">Syndic workshop forum</h1>
+  <p class="lead">Это форум мастерской Syndic workshop. Здесь вы можете просмотреть отзывы и задать интересующие вас вопросы!</p>
+  <hr class="my-4">
+  <p>Написать или прочитать отзывы? А может у вас возникли вопросы? Вам сюда!</p>
+  <p class="lead">
+      {% for theme in themes%}
+            <a class="btn btn-primary btn-lg" href="{% url 'forum:detail' theme.id %}" role="button">{{ theme.theme_title }}</a>
+      {% endfor %}
+            <a class="btn btn-primary btn-link btn-lg" href="{% url 'forum:theme-add'%}" role="button">Create</a>
+  </p>
+</div>
+
+
+{% endblock %}

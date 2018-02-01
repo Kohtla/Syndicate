@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class Theme(models.Model):
@@ -8,10 +9,15 @@ class Theme(models.Model):
     def __str__(self):
         return self.creator + " - " +self.theme_title
 
+    def get_absolute_url(self):
+        return reverse('forum:detail', kwargs={'pk':self.pk})
+
 class Message(models.Model):
     theme  = models.ForeignKey(Theme, on_delete=models.CASCADE)
     author = models.CharField(max_length = 250)
     message_text = models.CharField(max_length = 2000)
     answer_to = models.CharField(max_length = 250)
+    is_fav = models.BooleanField(default=False)
     def __str__(self):
-        return self.author + " - " +self.message_text
+        return self.author + " : " +self.message_text
+

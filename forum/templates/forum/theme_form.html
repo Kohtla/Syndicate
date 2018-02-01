@@ -1,0 +1,26 @@
+{% extends 'forum/base.html'%}
+{% block content%}
+<div class="container">
+    <div class = "row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+    <h2>Create new theme</h2>
+
+
+    <form  action ="" method = "post" enctype="multipart/form-data">
+    <fieldset>
+    <legend>Legend</legend>
+        {% csrf_token %}
+        {% include 'forum/form_template.html'%}
+                <button type = "submit" class ="btn btn-success">Add</button>
+    </fieldset>
+    </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}
