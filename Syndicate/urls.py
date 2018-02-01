@@ -1,7 +1,12 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from rest_framework.urlpatterns import format_suffix_patterns
+from shop import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^forum/', include('forum.urls')),
+    url(r'^shop/', views.ProductList.as_view())
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
