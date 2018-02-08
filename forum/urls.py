@@ -13,4 +13,8 @@ urlpatterns = [
     # /forum/theme/add/*
     url(r'theme/add/$', views.ThemeCreate.as_view(), name = 'theme-add'),
 
+    url(r'^logout/$', views.Log_out.as_view(), name = 'logout'),
+
+    url(r'^login/$', views.Log_in.as_view(), name='login'),
+
 ]
