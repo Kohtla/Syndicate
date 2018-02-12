@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.views import generic
 from .models import Theme, Message
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -8,6 +9,7 @@ from django.views.generic import View
 from .forms import UserForm, LoginUserForm
 from django.contrib.auth import logout
 from django.contrib import messages
+from django.core.urlresolvers import reverse
 
 class IndexView(generic.ListView):
     template_name = 'forum/index.html'
@@ -85,3 +87,5 @@ class Log_in(View):
                     return redirect('forum:index')
         messages.error(request,'The password is wrong or this user does not exist...')
         return render(request, self.template_name, {'form': form})
+
+
