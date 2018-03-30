@@ -4,15 +4,18 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Product
 from .serializers import ProductSerializer
+from django.views import generic
+
 
 # Create your views here.
 
-class ProductList(APIView):
+class IndexView(generic.ListView):
+    template_name = 'shop/index.html'
+    context_object_name = 'products'
 
-    def get(self, request):
-        products = Product.objects.all()
-        serializer = ProductSerializer(products, many = True)
-        return Response(serializer.data)
+    def get_queryset(self):
+        return Product.objects.all()
 
-    def post(self):
-        pass
+class DetailView(generic.DetailView):
+    model = Product
+    template_name = 'shop/product_detail.html'

@@ -61,7 +61,7 @@ class UserFormView(View):
 class Log_out(View):
     def get(self,request):
         logout(request)
-        return redirect('forum:index')
+        return redirect('shop:index')
 
 class Log_in(View):
     form_class = LoginUserForm

@@ -13,14 +13,20 @@ class Material(models.Model):
 
 class Size(models.Model):
     size = models.CharField(max_length=20)
+    def __str__(self):
+        return self.size
 
 class Colour(models.Model):
     name = models.CharField(max_length=50)
     definition = models.CharField(max_length=500)
+    def __str__(self):
+        return self.name
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
     definition = models.CharField(max_length=500)
+    def __str__(self):
+        return self.name
 
 class Product(models.Model):
     name = models.CharField(max_length=200)

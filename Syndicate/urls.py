@@ -5,8 +5,9 @@ from shop import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^shop/', include('shop.urls')),
     url(r'^forum/', include('forum.urls')),
-    url(r'^shop/', views.ProductList.as_view())
+
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -17,7 +17,6 @@ class Message(models.Model):
     author = models.CharField(max_length = 250)
     message_text = models.CharField(max_length = 2000)
     answer_to = models.CharField(max_length = 250)
-    is_fav = models.BooleanField(default=False)
     def __str__(self):
         return self.author + " : " +self.message_text
 
