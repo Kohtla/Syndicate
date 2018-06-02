@@ -1,0 +1,28 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h3 class="display-4">Информационная система</h3>
+
+    <h3 class="display-5">Конструирование фасона и генерация выкройки</h3>
+
+  <hr class="my-4">
+    {%if user.is_authenticated%}
+    <h3 class="display-5">Здравствуйте, {{user.username}}!</h3>
+    {%endif%}
+  <p>Хотите сконструировать фасон? А может вы хотите купить готовый дизайнерский продукт? Задавайте вопросы на форуме!</p>
+  <p class="lead">
+
+      <a class="btn btn-primary btn-lg" href="{% url 'constructor:index'%}" role="button">Конструктор</a>
+      <a class="btn btn-primary btn-lg" href="{% url 'shop:index'%}" role="button">Магазин</a>
+      <a class="btn btn-primary btn-lg" href="{% url 'forum:index'%}" role="button">Форум</a>
+
+
+  </p>
+</div>
+
+
+{% endblock %}

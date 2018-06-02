@@ -23,17 +23,20 @@
 
 
 
-    <h2>Log in</h2>
+    <h2>Авторизация</h2>
 
 
     <form  action ="" method = "post" enctype="multipart/form-data">
     <fieldset>
-    <legend>Enter some data</legend>
+    <legend>Введите ваши данные</legend>
         {% csrf_token %}
         {% include 'forum/form_template.html'%}
-                <button type = "submit" class ="btn btn-success">Enter</button>
+                <button type = "submit" class ="btn btn-success">Войти</button>
+        <a class ="btn btn-link" href="{% url 'forum:register' %}">Регистрация</a>
     </fieldset>
+
     </form>
+
             </div>
         </div>
     </div>

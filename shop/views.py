@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import Product
 from .serializers import ProductSerializer
 from django.views import generic
+from django.views.generic import View
 
 
 # Create your views here.
@@ -19,3 +20,4 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Product
     template_name = 'shop/product_detail.html'
+
