@@ -6,5 +6,5 @@ class IndexView(View):
     template_name = 'main/index.html'
 
     # display blank form
-    def get(self, request: object) -> object:
+    def get(self, request):
         return render(request, self.template_name, None)

@@ -15,7 +15,7 @@ class IndexView(View):
     template_name = 'constructor/index.html'
 
     # display blank form
-    def get(self, request: object) -> object:
+    def get(self, request):
         return render(request, self.template_name, None)
 
     # process from data
@@ -23,7 +23,7 @@ class IndexView(View):
 
 class Constructor(View):
     template_name = 'constructor/Syndicate/Syndicate.html'
-    def get(self, request: object) -> object:
+    def get(self, request):
         return render(request, self.template_name, None)
 
     #def post(self,request):
@@ -33,7 +33,7 @@ class Constructor(View):
 
 class Builder(View):
     template_name = 'constructor/Syndicate/Syndicate.html'
-    def get(self, request: object) -> object:
+    def get(self, request):
         return render(request, self.template_name, None)
 
     #def post(self,request):
