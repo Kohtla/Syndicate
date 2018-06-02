@@ -58,7 +58,7 @@ class UserFormView(View):
     template_name = 'forum/registration_form.html'
 
     #display blank form
-    def get(self, request: object) -> object:
+    def get(self, request):
         form = self.form_class(None)
         return render(request, self.template_name, {'form':form})
 
@@ -85,14 +85,14 @@ class UserFormView(View):
         return render(request, self.template_name, {'form': form})
 
 class Log_out(View):
-    def get(self, request: object) -> object:
+    def get(self, request):
         logout(request)
         return redirect('main:index')
 
 class Log_in(View):
     form_class = LoginUserForm
     template_name = 'forum/login_form.html'
-    def get(self, request: object) -> object:
+    def get(self, request):
         form = self.form_class(None)
         return render(request, self.template_name, {'form':form})
 
