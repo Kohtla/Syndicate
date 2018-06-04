@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'forum/base.html' %}
 
-</body>
-</html>
+{% block title %}Forum{% endblock %}
+
+{% block content %}
+
+
+<div class = "container">
+    <h2>Личный кабинет</h2>
+<div class = "row">
+            <div class = "col-md-3">
+                <div class="card mb-3">
+                  <h3 class="card-header">{{user.username}}</h3>
+                  <div class="card-body">
+
+                  </div>
+                  <img style="height: 100%; width: 100%; align: center; display: block;" src="https://openclipart.org/download/247319/abstract-user-flat-3.svg" alt="Card image">
+                  <div class="card-body">
+                    <p class="card-text">E-mail: {{user.email}}</p>
+                      <p class="card-text">Имя: {{user.first_name}}</p>
+                      <p class="card-text">Фамилия: {{user.last_name}}</p>
+                  </div>
+                  <div class="card-footer text-muted">
+
+                        Создал свою запись {{user.date_joined}}
+                  </div>
+                </div>
+
+
+
+            </div>
+    <div class="col-md-9">
+        <h4>Пока заказов нет...</h4>
+    </div>
+</div>
+</div>
+{% endblock %}

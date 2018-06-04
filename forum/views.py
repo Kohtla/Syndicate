@@ -116,8 +116,10 @@ class Log_in(View):
         return render(request, self.template_name, {'form': form})
 
 
-class ProfileDetailView(generic.DetailView):
-    model = User
+class ProfileDetailView(View):
     template_name = 'forum/profile.html'
+
+    def get(self,request):
+        return render(request,self.template_name,None)
 
 
