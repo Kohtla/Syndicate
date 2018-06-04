@@ -4,10 +4,31 @@
 
 {% block content %}
 
+<div class="jumbotron">
+  <h3 class="display-4">Главная страница конструктора</h3>
+
+    <h3 class="display-5">Конструирование фасона и формирование выкройки</h3>
+
+  <hr class="my-4">
+    {%if user.is_authenticated%}
+    <h3 class="display-5">Здравствуйте, {{user.username}}!</h3>
+    <p>Здесь начинается ваше творчество!</p>
+      <a class="btn btn-primary btn-lg" href="{% url 'constructor:builder'%}" role="button">Начать конструирование</a>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Мои работы</a>
+    {% else %}
+    <p>Для работы вам нужно авторизоваться!</p>
+    <a class="btn btn-primary btn-lg" href="{%url 'forum:login'%}" role="button">Войти в систему</a>
+    {%endif%}
+
+  <p class="lead">
 
 
-<h1>Constructor's main page</h1>
-<a href = "{% url 'constructor:builder'%}"> Начать конструирование</a>
+
+
+
+  </p>
+</div>
+
 
 
 

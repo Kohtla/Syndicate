@@ -11,12 +11,11 @@
                 <div class="card mb-3">
                   <h3 class="card-header">{{theme.theme_title}}</h3>
                   <div class="card-body">
-                    <h5 class="card-title">Это секция помощи</h5>
-                    <h6 class="card-subtitle text-muted">Фото помощи</h6>
+
                   </div>
                   <img style="height: 100%; width: 100%; display: block;" src="{{theme.theme_image}}" alt="Card image">
                   <div class="card-body">
-                    <p class="card-text">Описание действий</p>
+                    <p class="card-text">{{theme.theme_def}}</p>
                   </div>
                   <div class="card-footer text-muted">
                     created by {{theme.creator}}
@@ -25,7 +24,7 @@
                 </div>
             </div>
             <div class = "col-md-9">
-                <h3>Messages</h3>
+                <h3>Сообщения</h3>
                 {% if error_message %}
                 <p><strong>{{error_message}}</strong></p>
                 {%endif%}
@@ -39,6 +38,7 @@
                         <p class="card-text">{{message.message_text}}</p>
                       </div>
                     </div>
+                <br>
                 {% endfor %}
 <br>
                 <div class="card">

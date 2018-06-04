@@ -4,15 +4,15 @@
     <div class = "row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
-    <h2>Create new theme</h2>
+    <h2>Создание темы</h2>
 
 
     <form  action ="" method = "post" enctype="multipart/form-data">
     <fieldset>
-    <legend>Legend</legend>
+    <legend>Введите данные</legend>
         {% csrf_token %}
         {% include 'forum/form_template.html'%}
-                <button type = "submit" class ="btn btn-success">Add</button>
+                <button type = "submit" class ="btn btn-success">Добавить</button>
     </fieldset>
     </form>
         </div>

@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.views import generic
 from .models import Theme, Message
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.views.generic import View
@@ -46,12 +46,13 @@ class DetailView(generic.DetailView):
             message.theme = Theme.objects.get(pk = pk)
             message.author = request.user
             message.message_text = form.cleaned_data['message_text']
+            #message.is_fav = True
             message.save()
-            return render(request, self.template_name, {'form': form})
+            return redirect('forum:detail',pk)
 
 class ThemeCreate(CreateView):
     model = Theme
-    fields =['creator', 'theme_title', 'theme_image']
+    fields =['creator', 'theme_title', 'theme_image', 'theme_def']
 
 class UserFormView(View):
     form_class = UserForm
@@ -80,7 +81,7 @@ class UserFormView(View):
             if user is not None:
                 if user.is_active:
                     login(request,user)
-                    return redirect('forum:index')
+                    return redirect('main:index')
 
         return render(request, self.template_name, {'form': form})
 
@@ -111,7 +112,12 @@ class Log_in(View):
                 if user.is_active:
                     login(request,user)
                     return redirect('main:index')
-        messages.error(request,'The password is wrong or this user does not exist...')
+        messages.error(request,'Пароль неверный или такого пользователя не существует...')
         return render(request, self.template_name, {'form': form})
+
+
+class ProfileDetailView(generic.DetailView):
+    model = User
+    template_name = 'forum/profile.html'
 
 

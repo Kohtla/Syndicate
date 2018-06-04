@@ -17,6 +17,8 @@ urlpatterns = [
 
     url(r'^login/$', views.Log_in.as_view(), name='login'),
 
+    url(r'^login/$', views.ProfileDetailView.as_view(),name = 'profile')
+
 
 
 ]

@@ -1,13 +1,40 @@
-{% extends 'shop/base.html' %}
+{% extends 'forum/base.html' %}
 
 {% block title %}{{product.name}}{% endblock %}
 
 {% block content %}
 
-<p>{{product.material}}</p>
-<p>{{product.size}}</p>
-<p>{{product.colour}}</p>
-<p>{{product.category}}</p>
+
+
+<div class = "row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <div class="card mb-3">
+  <h3 class="card-header">{{product.name}}</h3>
+  <div class="card-body">
+    <h5 class="card-title">{{product.price}} руб.</h5>
+    <h6 class="card-subtitle text-muted">{{product.category}}</h6>
+  </div>
+  <img style="height: 100%; width: 100%; display: block;" src="{{product.image}}" alt="Card image">
+  <div class="card-body">
+    <p class="card-text">{{product.definition}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Материал - {{product.material}}</li>
+    <li class="list-group-item">Размер - {{product.size}}</li>
+    <li class="list-group-item">Цвет - {{product.colour}}</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Добавить в корзину</a>
+    <a href="{% url 'shop:index'%}" class="card-link">Назад</a>
+  </div>
+  <div class="card-footer text-muted">
+    {{product.name}}
+  </div>
+</div>
+
+    </div>
+</div>>
 
 
 {% endblock %}

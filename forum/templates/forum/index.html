@@ -13,7 +13,7 @@
       {% for theme in themes%}
             <a class="btn btn-primary btn-lg" href="{% url 'forum:detail' theme.id %}" role="button">{{ theme.theme_title }}</a>
       {% endfor %}
-            <a class="btn btn-primary btn-link btn-lg" href="{% url 'forum:theme-add'%}" role="button">Create</a>
+            <a class="btn btn-primary btn-link btn-lg" href="{% url 'forum:theme-add'%}" role="button">Создать</a>
   </p>
 </div>
 

@@ -5,6 +5,7 @@ from django.urls import reverse
 class Theme(models.Model):
     creator = models.CharField(max_length = 250)
     theme_title = models.CharField(max_length = 1000)
+    theme_def = models.CharField(max_length=1000)
     theme_image = models.CharField(max_length = 2000)
     def __str__(self):
         return self.creator + " - " +self.theme_title
@@ -17,6 +18,7 @@ class Message(models.Model):
     author = models.CharField(max_length = 250)
     message_text = models.CharField(max_length = 2000)
     answer_to = models.CharField(max_length = 250)
+    #is_fav = models.NullBooleanField()
     def __str__(self):
         return self.author + " : " +self.message_text
 
