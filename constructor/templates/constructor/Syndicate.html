@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<html>
+{% extends 'forum/base.html' %}
 
+{% block title %}Конструктор{% endblock %}
+
+
+{% block heading %}
 <head>
 	<title>Syndicate constructor</title>
 	<meta charset="utf-8">
@@ -8,8 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'constructor/Syndicate.min.css' %}">
 	<script type="text/javascript" src="{% static 'constructor/b4w.simple.min.js' %}"></script>
 </head>
-
-<body>
+{% endblock %}
+{% block content %}
 	<div id="controls-container">
 		<div class="button-container">
 			<div class="delete-container button data-button">
@@ -241,6 +244,5 @@
 });
 b4w.require("Syndicate_main").init();
 	</script>
-</body>
 
-</html>
+{% endblock %}
