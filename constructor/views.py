@@ -22,7 +22,7 @@ class IndexView(View):
     #def post(self, request):
 
 class Constructor(View):
-    template_name = 'constructor/Syndicate/Syndicate.html'
+    template_name = 'constructor/constructor.html'
     def get(self, request):
         return render(request, self.template_name, None)
 
