@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from shop import views as v
 
 urlpatterns = [
-    url(r'^$', include('main.urls')),
+    url(r'^', include('main.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^shop/', include('shop.urls')),
     url(r'^forum/', include('forum.urls')),
