@@ -4010,6 +4010,7 @@ tbody.collapse.show {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 0.5rem 1rem;
+  z-index: 1;
 }
 
 .navbar > .container,
@@ -4506,6 +4507,7 @@ tbody.collapse.show {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.4rem;
+	z-index: 1;
 }
 
 .card > hr {
