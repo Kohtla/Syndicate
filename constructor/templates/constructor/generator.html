@@ -1,0 +1,77 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}Заказы{% endblock %}
+
+{% block content %}
+
+<div class = "container">
+    <h1>Предварительный просмотр</h1>
+    <div class ="row">
+        <div class ="col-4">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Параметры</h4>
+
+                  <table class="table table-hover">
+                      <tbody>
+
+                         <tr>
+                          <th scope="row">Обхват груди </th>
+                          <td>{{constructed.chest}} см</td>
+                         </tr>
+                                               <tr>
+                          <tr>
+                          <th scope="row">Высота изделия </th>
+                          <td>{{constructed.height}} см</td>
+                         </tr>
+                                               <tr>
+                          <tr>
+                          <th scope="row">Обхват шеи </th>
+                          <td>{{constructed.neck}} см</td>
+                         </tr>
+                                               <tr>
+                          <tr>
+                          <th scope="row">Длина рукава </th>
+                          <td>{{constructed.sleeves}} см</td>
+                         </tr>
+                                               <tr>
+                          <tr>
+                          <th scope="row">Пройма </th>
+                          <td>{{constructed.shoulder}} см</td>
+                         </tr>
+                      </tbody>
+                  </table>
+
+              </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div class ="col-8">
+            <div class="card mb-3">
+  <h3 class="card-header">Выкройка</h3>
+
+  <img style="height: 100%px; width: 100%; display: block;" src="{{constructed.blueprint.url}}" alt="Card image">
+
+  <div class="card-body">
+    <a href="{{constructed.blueprint.url}}" class="card-link">Скачать</a>
+
+  </div>
+  <div class="card-footer text-muted">
+    {{con.created_date|date:"d/m/Y" }}
+  </div>
+</div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}

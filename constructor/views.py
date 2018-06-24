@@ -1,7 +1,9 @@
-from django.views.generic import View
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.views.generic import View, ListView, DetailView
 from django.shortcuts import render
 import json
 from constructor.models import Constructed, Part, PartsInPlace
+from draw import draw
 
 
 class IndexView(View):
@@ -49,13 +51,22 @@ class Builder(View):
 
         print(chest, height, neck, sleeve, shoulder)
         product = Constructed()
+        product.user = request.user
         product.chest = chest
         product.height = height
         product.neck = neck
         product.sleeves = sleeve
         product.shoulder = shoulder
+
+
+
+        blueprint = draw(int(chest),int(height),int(neck),int(sleeve),int(shoulder))
+
         product.save()
 
+        image_field = product.blueprint
+        img_name = 'my_image.png'
+        image_field.save(img_name, InMemoryUploadedFile(blueprint,None,img_name,'image/png', blueprint.tell,None))
 
         for d in data['details']:
             naming = d['name']
@@ -76,4 +87,23 @@ class Builder(View):
                 detail.save()
                 print(detail.part, detail.constructed)
         return render(request, self.template_name, c)
+
+
+
+
+class Report(ListView):
+    template_name = "constructor/report.html"
+    context_object_name = 'cons'
+
+
+
+    def get_queryset(self):
+        return Constructed.objects.all().order_by("-created_date")
+
+
+class Generator(DetailView):
+    model = Constructed
+    template_name = "constructor/generator.html"
+
+
 

@@ -1,0 +1,42 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}Заказы{% endblock %}
+
+{% block content %}
+
+<div class = "container">
+    <h1>Заказы</h1>
+    <div class ="row">
+
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Пользователь</th>
+      <th scope="col">Дата заказа</th>
+      <th scope="col">Расположение объектов</th>
+      <th scope="col">Выкройка</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for con in cons%}
+     <tr>
+      <th scope="row">{{con.user.username}}</th>
+      <td>{{con.created_date|date:"d/m/Y" }} {{ con.created_date|time:"H:i"}}</td>
+      <td><a class="btn btn-primary btn-sm" href="#" role="button">Просмотреть</a></td>
+      <td><a class="btn btn-primary btn-sm" href="{% url 'constructor:generator' con.id%}" role="button">Скачать</a></td>
+     </tr>
+  {% endfor %}
+
+
+  </tbody>
+</table>
+
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}

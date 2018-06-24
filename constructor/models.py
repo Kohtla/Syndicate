@@ -2,12 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Constructed(models.Model):
-    #user = models.ForeignKey(User,on_delete = models.CASCADE)
+    user = models.ForeignKey(User,on_delete = models.CASCADE)
+    created_date = models.DateTimeField(auto_now_add=True)
     chest = models.FloatField()
     height = models.FloatField()
     neck = models.FloatField()
     sleeves = models.FloatField()
     shoulder = models.FloatField()
+    blueprint = models.FileField(null=True, blank=True)
 
 
 class Part(models.Model):

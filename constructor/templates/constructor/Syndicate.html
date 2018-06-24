@@ -82,12 +82,12 @@
 			//var cardbox = document.getElementById("cardbox");
 			//cardbox.appendChild(a);
 			p.enable_camera_controls(!1, !1, !1, null, !0);
-			g("\u041e\u0431\u0445\u0432\u0430\u0442 \u0433\u0440\u0443\u0434\u0438", 60, 150);
-			g("\u0412\u044b\u0441\u043e\u0442\u0430 \u0438\u0437\u0434\u0435\u043b\u0438\u044f",
+			g("chest_id", 60, 150);
+			g("height_id",
 				40, 150);
-			g("\u041e\u0431\u0445\u0432\u0430\u0442 \u0448\u0435\u0438", 20, 50);
-			g("\u0414\u043b\u0438\u043d\u0430 \u0440\u0443\u043a\u0430\u0432\u0430", 0, 100);
-			g("\u041f\u0440\u043e\u0439\u043c\u0430", 15, 80)
+			g("neck_id", 20, 50);
+			g("sleeves_id", 5, 100);
+			g("shoulder_id", 15, 80)
 		}
 
 		function x(a) {
@@ -175,6 +175,18 @@
 						}
 					}
 				});*/
+				
+				var chest = document.getElementById("chest_id").textContent;
+				var neck = document.getElementById("neck_id").textContent;
+				var height =document.getElementById("height_id").textContent;
+				var sleeves = document.getElementById("sleeves_id").textContent;
+				var shoulder = document.getElementById("shoulder_id").textContent;
+
+				
+				
+				console.log(chest,neck,height,sleeves,shoulder);
+				
+				
 				$.ajax({
 					beforeSend: function(xhr, settings) {
 						if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -184,11 +196,11 @@
 					type: 'POST',
 					url: save_answer_link,
 					data: JSON.stringify({
-						chest: "50",
-						height: "10",
-						neck: "1",
-						sleeve: "2",
-						shoulder: "3",						
+						chest: chest,
+						height: height,
+						neck: neck,
+						sleeve: sleeves,
+						shoulder: shoulder,						
 						details: f//список с деталями
 						 }),
 					
