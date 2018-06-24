@@ -1,11 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Constructed(models.Model):
+    #user = models.ForeignKey(User,on_delete = models.CASCADE)
     chest = models.FloatField()
     height = models.FloatField()
     neck = models.FloatField()
     sleeves = models.FloatField()
     shoulder = models.FloatField()
+
 
 class Part(models.Model):
     name = models.CharField(max_length = 200)
@@ -24,3 +27,4 @@ class PartsInPlace(models.Model):
     qy = models.FloatField()
     qz = models.FloatField()
     qw = models.FloatField()
+
