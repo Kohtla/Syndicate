@@ -20,38 +20,42 @@
 <br>
 <div class="container">
 	<div class="row">
-		<div class="col-6">
+		<div class="col-5 ">
 
-			<div class="card bg-light">
+			<div class="card bg-light on-front">
 				<div class="card-header">Параметры</div>
 
 				<div class="card-body">
 					<div id="cardbox">
 					</div>
 					<div>
-						<button id="delete" type="button" class="btn btn-outline-danger ">Удалить деталь</button>
-						<div class="btn-group" role="group">
-							<button id="btnGroupDrop2" type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Добавить деталь</button>
-							<div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-								<a class="dropdown-item" id="load-1" href="#">КАРМАН</a>
-								<a class="dropdown-item" id="load-2" href="#">ПУГОВКА</a>
-							</div>
-
-						</div>
-						<!--button id="load-1" type="button" class="btn btn-outline-info btn-block">Карман</button>
-					<button id="load-2" type="button" class="btn btn-outline-info btn-block">Пуговка</button-->
 						<form id="post_info">
+							<button id="delete" type="button" class="btn btn-outline-danger btn-sm ">Удалить деталь</button>
+							<div class="btn-group" role="group">
+								<button id="btnGroupDrop2" type="button" class="btn btn-outline-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Добавить деталь</button>
+								<div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+									<a class="dropdown-item" id="load-1" href="#">КАРМАН</a>
+									<a class="dropdown-item" id="load-2" href="#">ПУГОВКА</a>
+								</div>
+
+							</div>
+							<!--button id="load-1" type="button" class="btn btn-outline-info btn-block">Карман</button>
+					<button id="load-2" type="button" class="btn btn-outline-info btn-block">Пуговка</button-->
+
 							{% csrf_token %}
-							<button id="ready" type="submit" class="btn btn-outline-success">Готово</button>
+							<button id="ready" type="submit" class="btn btn-outline-success btn-sm">Готово</button>
 						</form>
 
+
 						<!--button id="ready" type="button" class="btn btn-outline-success">Готово</button-->
+					</div>
+					<div id="cardbox2">
 					</div>
 				</div>
 			</div>
 
 		</div>
-		<div class="col-6">
+		<div class="col-7">
 
 
 
@@ -76,18 +80,20 @@
 			E();
 			F();
 			p.enable_camera_controls();
+			console.log("Камера включена");
 			//a = document.createElement("div");
 			//a.className = "main_sliders_container";
 			//a.setAttribute("id", "main_sliders_container");
 			//var cardbox = document.getElementById("cardbox");
 			//cardbox.appendChild(a);
-			p.enable_camera_controls(!1, !1, !1, null, !0);
-			g("chest_id", 60, 150);
-			g("height_id",
-				40, 150);
-			g("neck_id", 20, 50);
-			g("sleeves_id", 5, 100);
-			g("shoulder_id", 15, 80)
+
+			g("chest_id", "Обхват груди", 60, 150);
+			g("height_id", "Высота изделия", 40, 150);
+			g("neck_id", "Обхват шеи", 20, 50);
+			g("sleeves_id", "Длина рукава", 5, 100);
+			g("shoulder_id", "Пройма", 15, 80);
+			create_rotator("rotator", "Поворот детали", 0, 360);
+			create_sizer("obj_size", "Размер детали", 0, 5);
 		}
 
 		function x(a) {
@@ -175,18 +181,18 @@
 						}
 					}
 				});*/
-				
+
 				var chest = document.getElementById("chest_id").textContent;
 				var neck = document.getElementById("neck_id").textContent;
-				var height =document.getElementById("height_id").textContent;
+				var height = document.getElementById("height_id").textContent;
 				var sleeves = document.getElementById("sleeves_id").textContent;
 				var shoulder = document.getElementById("shoulder_id").textContent;
 
-				
-				
-				console.log(chest,neck,height,sleeves,shoulder);
-				
-				
+
+
+				console.log(chest, neck, height, sleeves, shoulder);
+
+
 				$.ajax({
 					beforeSend: function(xhr, settings) {
 						if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -200,64 +206,25 @@
 						height: height,
 						neck: neck,
 						sleeve: sleeves,
-						shoulder: shoulder,						
-						details: f//список с деталями
-						 }),
-					
+						shoulder: shoulder,
+						details: f //список с деталями
+					}),
+
 					contentType: "application/json; charset=utf-8",
 					dataType: "json",
-					success: function(){
+					success: function() {
 						console.log("Работает");
 					},
-					error: function(){
+					error: function() {
 						console.log("Не работает");
 					}
-					
 
-					
+
+
 
 				});
 
 			});
-			/*document.getElementById("ready").addEventListener("click", function(a) {
-				a = h.get_all_objects("MESH");
-				for (var e, c, f = [], d = 0; d < a.length; d++) e = h.get_object_name(a[d]), c = m.get_tsr(a[d]), c = JSON.stringify(c), f.push({
-					name: e,
-					tsr: c
-				});
-				/*console.log(JSON.stringify({
-					chest: "50",
-					height: "10",
-					neck: "1",
-					sleeve: "2",
-					shoulder: "3",
-					details: f
-				}))
-				save_answer_link = "{% url 'constructor:builder' %}";
-				console.log(save_answer_link);
-				
-				
-				$.post({					
-					url: save_answer_link,
-					data: JSON.stringify({
-						chest: "50",
-						height: "10",
-						neck: "1",
-						sleeve: "2",
-						shoulder: "3",
-						details: f,
-						
-					}),
-					contentType:"application/json; charset=utf-8",
-					dataType: "json",
-					'csrfmiddlewaretoken': $("input[name='csrfmiddlewaretoken']").val(),
-					success: function(data)
-					{
-						console.log(data);
-					}
-
-				});
-			});*/
 
 			document.getElementById("delete").addEventListener("click", function(a) {
 				r && (a = h.get_object_data_id(r), q.unload(a), r = null)
@@ -300,17 +267,51 @@
 					m.set_tsr(n, f)
 				},
 				g = O.get_container();
+
+
 			g.addEventListener("mousedown", function(a) {
-				(n = h.pick_object(a.clientX, a.clientY)) && p.disable_camera_controls()
+				n = h.pick_object(a.clientX, a.clientY);
+
+				if (r != n) {
+					if (r)
+						h.clear_outline_anim(r);
+					if (n)
+						h.apply_outline_anim(n, 1, 1, 0);
+				}
+
+				r = n;
+				if (r) {
+					p.disable_camera_controls();
+					var sizer = document.getElementById("obj_size_input");
+					var sizer_text = document.getElementById("obj_size");
+
+					var size = m.get_scale(r).toFixed(2);
+
+
+
+					sizer.value = size;
+					sizer_text.textContent = size;
+				}
+
+
+
+
+				//p.disable_camera_controls();
+
+
+
 			}, !1);
 			g.addEventListener("mouseup", function(a) {
 				n = null
+				p.enable_camera_controls();
+				//console.log("Камера включена");
 			}, !1);
 			g.addEventListener("mousemove", function(b) {
 				if (n) {
 					var d = b.clientX;
 					b = b.clientY;
 					p.enable_camera_controls();
+
 					P.calc_ray(h.get_active_camera(), d, b, e);
 					w.get_pline_directional_vec(e, c);
 					Q.scale(c, 100, c);
@@ -320,11 +321,11 @@
 			}, !1)
 		}
 
-		function g(a, b, c) {
+		function g(a, rus_name, b, c) {
 			function e(a) {
 				g.textContent = d.value
 			}
-			var d = R(a),
+			var d = R(a, rus_name),
 				g = document.getElementById(a);
 			d.min = b;
 			d.max = c;
@@ -335,12 +336,86 @@
 				"ActiveXObject" in window ? d.onchange = e : d.oninput = e
 		}
 
-		function R(a) {
+
+
+		function create_rotator(a, rus_name, b, c) {
+			
+			function e(a) {				
+				g.textContent = d.value;
+				
+				
+				var rad = d.value - angle;
+				console.log(rad);
+				rad = L.deg_to_rad(rad);
+				//console.log(rad);
+				m.rotate_z_local(r,rad);
+				angle = d.value;
+			
+			}
+			var d = init_rot_size(a, rus_name),
+				g = document.getElementById(a);
+			d.min = b;
+			d.max = c;
+			d.step = 1;
+			d.value = b;
+			g.textContent = d.value;
+			!window.ActiveXObject &&
+				"ActiveXObject" in window ? d.onchange = e : d.oninput = e
+		}
+
+		function create_sizer(a, rus_name, b, c) {
+			function e(a) {
+				g.textContent = d.value;
+				var sc = d.value;
+				console.log(sc);
+				m.set_scale(r,sc);
+
+			}
+			var d = init_rot_size(a, rus_name),
+				g = document.getElementById(a);
+			d.min = b;
+			d.max = c;
+			d.step = 0.1;
+			d.value = b;
+			g.textContent = d.value;
+			!window.ActiveXObject &&
+				"ActiveXObject" in window ? d.onchange = e : d.oninput = e
+		}
+
+		function init_rot_size(a, rus_name) {
 			var b = document.createElement("div");
 			b.className = "slider_container";
-			var c = document.createElement("label");
+			var c = document.createElement("div");
+			c.className = "text_label";
+			var span = document.createElement("span");
 			//c.className = "text_label";
-			c.textContent = a;
+			span.textContent = rus_name;
+			span.className = "";
+			c.appendChild(span);
+			var f = document.createElement("input");
+			f.className = "input_slider";
+			f.setAttribute("id", a + "_input");
+			f.setAttribute("type", "range");
+			var d = document.createElement("label");
+			//d.className = "value_label";
+			d.setAttribute("id", a);
+			b.appendChild(c);
+			b.appendChild(f);
+			b.appendChild(d);
+			document.getElementById("cardbox2").appendChild(b);
+			return f
+		}
+
+		function R(a, rus_name) {
+			var b = document.createElement("div");
+			b.className = "slider_container";
+			var c = document.createElement("div");
+			c.className = "text_label";
+			var span = document.createElement("span");
+			//c.className = "text_label";
+			span.textContent = rus_name;
+			span.className = "";
+			c.appendChild(span);
 			var f = document.createElement("input");
 			f.className = "input_slider";
 			f.setAttribute("type", "range");
@@ -375,6 +450,7 @@
 			l = b("tsr"),
 			L = b("util");
 		b("geometry");
+		var angle = 0;
 		var r = null,
 			J = [0, 1, 0],
 			I = [1, 0, 0];

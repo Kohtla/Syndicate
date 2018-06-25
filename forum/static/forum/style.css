@@ -3188,7 +3188,9 @@ tbody.collapse.show {
 
 .dropup,
 .dropdown {
+	
   position: relative;
+	
 }
 
 .dropdown-toggle::after {
@@ -4507,8 +4509,12 @@ tbody.collapse.show {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.4rem;
-	z-index: 1;
+
 }
+	.on-front
+	{
+			z-index: 1;
+	}
 
 .card > hr {
   margin-right: 0;
@@ -4891,6 +4897,8 @@ tbody.collapse.show {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0.4rem;
+	display: block;
+	float: left;
 }
 
 .badge:empty {

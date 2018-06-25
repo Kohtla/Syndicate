@@ -110,23 +110,12 @@ input[type="range" i] {
 	color: #c4c4c4
 }
 
-.text_label {
-	background-color: #323232;
-	border: 2px solid rgba(98, 98, 98, .2);
-	border-radius: 2px;
+.text_label {	
 	width: 120px;
-	height: 30px;
+	height: 20px;
 	display: block;
 	float: left;
-	font-size: 16px;
-	font-weight: normal;
-	color: #fff;
-	cursor: pointer;
-	text-decoration: none;
-	text-align: center;
-	line-height: 28px;
-	margin-bottom: 4px;
-	box-shadow: 0 0 4px 0 rgba(98, 98, 98, .8)
+	
 }
 
 .slider_container {
@@ -477,4 +466,6 @@ input[type="range" i] {
 		background: url("./interface/10.png");
 		background-size: 100% 100%
 	}
+	
+
 }

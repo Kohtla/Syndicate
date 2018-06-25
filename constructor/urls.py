@@ -12,8 +12,10 @@ urlpatterns = [
     url(r'^constructor/$',views.Constructor.as_view(), name = 'constructor'),
 
     url(r'^builder/$',views.Builder.as_view(), name = 'builder'),
-    url(r'report/$', views.Report.as_view(), name = 'report'),
-    url(r'report/(?P<pk>[0-9]+)/$',views.Generator.as_view(), name = 'generator'),
+    url(r'^report/$', views.Report.as_view(), name = 'report'),
+    url(r'^report/(?P<pk>[0-9]+)/$',views.Generator.as_view(), name = 'generator'),
+
+    url (r'^report/3d/(?P<pk>[0-9]+)/$', views.DetailDocument.as_view(), name ='document'),
 ]
 
 

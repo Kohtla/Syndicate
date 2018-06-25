@@ -105,5 +105,9 @@ class Generator(DetailView):
     model = Constructed
     template_name = "constructor/generator.html"
 
+class DetailDocument(DetailView):
+    model = Constructed
+    template_name = "constructor/document.html"
+    return PartsInPlace.objects.filter()
 
 
